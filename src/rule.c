@@ -27,6 +27,8 @@ void rule_serialize(FILE *rsp, struct rule *rule, int index)
             rule->label ? rule->label : "",
             rule->app ? rule->app : "",
             rule->title ? rule->title : "",
+            rule->role ? rule->role : "",
+            rule->subrole ? rule->subrole : "",
             rule->did,
             rule->sid,
             rule->follow_space,
