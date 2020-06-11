@@ -413,7 +413,7 @@ static EVENT_CALLBACK(EVENT_HANDLER_WINDOW_RESIZED)
     } else if (was_fullscreen && !is_fullscreen) {
         window_manager_wait_for_native_fullscreen_transition(window);
 
-        if (window_manager_should_manage_window(window) && !window_manager_find_managed_window(&g_window_manager, window)) {
+        if (window_manager_should_manage_window(window) && !window_manager_find_managed_window(&g_window_manager, window) && !window_is_unknown(window)) {
             struct view *view = space_manager_tile_window_on_space(&g_space_manager, window, window_space(window));
             window_manager_add_managed_window(&g_window_manager, window, view);
         }
