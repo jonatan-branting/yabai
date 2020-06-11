@@ -434,7 +434,7 @@ bool window_is_popover(struct window *window)
 bool window_is_unknown(struct window *window)
 {
     CFStringRef subrole = window_subrole(window);
-    if (!subrole) return false;
+    if (!subrole) return true;
 
     bool result = CFEqual(subrole, kAXUnknownSubrole);
     CFRelease(subrole);
