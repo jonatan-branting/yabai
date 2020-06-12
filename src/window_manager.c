@@ -1287,15 +1287,6 @@ void window_manager_send_window_to_space(struct space_manager *sm, struct window
         window_manager_purify_window(wm, window);
     }
 
-    if ((space_is_visible(src_sid) && (moved_by_rule || wm->focused_window_id == window->id))) {
-        struct window *next = window_manager_find_window_on_space_by_rank(wm, src_sid, 2);
-        if (next) {
-            window_manager_focus_window_with_raise(&next->application->psn, next->id, next->ref);
-        } else {
-            _SLPSSetFrontProcessWithOptions(&g_process_manager.finder_psn, 0, kCPSNoWindows);
-        }
-    }
-
     space_manager_move_window_to_space(dst_sid, window);
 
     if (window_manager_should_manage_window(window) && !window->is_minimized && !window->is_floating) {
