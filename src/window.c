@@ -436,7 +436,7 @@ bool window_is_unknown(struct window *window)
     CFStringRef subrole = window_subrole(window);
     if (!subrole) return false;
 
-    bool result = CFStringHasPrefix(subrole, kAXUnknownSubrole);
+    bool result = CFStringHasPrefix(subrole, kAXUnknownSubrole) || CFStringHasPrefix(subrole, kAXSystemDialogSubrole);
     CFRelease(subrole);
 
     return result;
